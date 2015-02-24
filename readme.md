@@ -57,13 +57,13 @@ HLT|`0x12`|null|Halts excecution
 ###Syntax
 **No-arg operations:** `OP`
 
-**N-arg operations:** `OP arg1,arg2...,argN`
+**N-arg operations:** `OP arg1 arg2 ... argN`
 
 **Labels** Labels can act as an external function. The first line must be the label name, and the length of the function it contains, in bytes. Ex:
 ```
 _dostuff 7
-ADD 1,2
-OR %SP,13
+ADD 1 2
+OR %SP 13
 POP
 ```
 
