@@ -15,18 +15,24 @@ class Parser:
 
     def get_labels(self):
         labels = {}
-        i = 0
-        label_regex = re.compile('_\D+')
-        while self.tokens[i] != 'SECTION.START':
-            if re.search(label_regex, self.tokens[i]) and re.search("\d",self.tokens[i+1]): #regex for labels
-                method = []
-                for j in range(i + 1, (i + 2) + int(self.tokens[i+1])):
-                    method.append(self.tokens[j])
-                labels.update({self.tokens[i]:method})
-            #del self.tokens[i]
-            i += 1 #Be sure to jump forward the right length. Soon we'll jump passed the body of the label
-        #print self.tokens
-        print labels
+        label_regex = re.compile('_\D+')    #regex for label
+        for cur_token in range(0,len(self.tokens)): #go over entire set of tokens
+            if re.search(label_regex, self.tokens[cur_token]):  #if it's a label def
+                label_entry = []
+                label_length = int(self.tokens[cur_token+1])
+                for label_op in range(cur_token + 1, cur_token + label_length + 2):
+                    #print self.tokens[label_op]
+                    label_entry.append(self.tokens[label_op])
+                #print "\n"
+                #print label_entry
+                labels.update({self.tokens[cur_token]:label_entry})
+        self.labels = labels
+
+    #def update_with_labels(self):
+
+
+
+
 
 
 
@@ -34,3 +40,4 @@ class Parser:
 p = Parser("testing/test.p15")
 p.tokenize()
 p.get_labels()
+p.update_with_labels()

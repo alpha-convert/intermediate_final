@@ -8,7 +8,6 @@ RET
 _exit 1
 HLT
 
-SECTION.START
 ADD 1 2
-JMP _calcstuff
-JMP _exit
+JMP .calcstuff
+JMP .exit
