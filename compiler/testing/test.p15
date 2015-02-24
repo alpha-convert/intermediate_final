@@ -1,13 +1,14 @@
-_calcstuff 9
+_calcstuff 10
 ADD 1 2
 MUL 3 4
 DIV 8 2
+RET
 
 
 _exit 1
 HLT
 
-
+SECTION.START
 ADD 1 2
 JMP _calcstuff
 JMP _exit

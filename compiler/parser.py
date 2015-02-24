@@ -11,16 +11,22 @@ class Parser:
 
     def tokenize(self):
         self.tokens = self.file_contents.split()    #split into tokens
-        print self.tokens
+        #print self.tokens
 
     def get_labels(self):
-        labels = []
+        labels = {}
         i = 0
         label_regex = re.compile('_\D+')
-        while i < len(self.tokens) - 1:
+        while self.tokens[i] != 'SECTION.START':
             if re.search(label_regex, self.tokens[i]) and re.search("\d",self.tokens[i+1]): #regex for labels
-                print "Found a label!"
-            i += 1
+                method = []
+                for j in range(i + 1, (i + 2) + int(self.tokens[i+1])):
+                    method.append(self.tokens[j])
+                labels.update({self.tokens[i]:method})
+            #del self.tokens[i]
+            i += 1 #Be sure to jump forward the right length. Soon we'll jump passed the body of the label
+        #print self.tokens
+        print labels
 
 
 
