@@ -6,7 +6,7 @@ import re
 class Parser:
     def __init__(self, filename):
         self.filename = filename
-        with open('testing/test.p15', 'r') as file: #read the whole file
+        with open("testing/powers.p15", 'r') as file: #read the whole file
             self.file_contents = file.read()
 
     def tokenize(self):

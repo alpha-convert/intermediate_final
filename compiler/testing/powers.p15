@@ -1,0 +1,15 @@
+_square 10
+MOV %AL 10
+MUL %AL %SP
+MOV %AL %SP
+POP
+
+_prntAL 7
+MOV %SY1 2927
+MOV %SY2 %AL
+SYS
+
+
+JMP .square
+JMP .prntAL
+HLT

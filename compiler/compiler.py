@@ -18,12 +18,13 @@ class Compiler:
         hexcode = []
         for i, item in enumerate(self.code):
             hexcode.append(self.ops.contains(item)) #If the item is one of the opcodes, return the opcode in hex. If it isnt, return the number in hex.
+        #print hexcode
+        print self.code
         print hexcode
-        # print self.code
         self.compiled = hexcode
 
     def write_to_file(self):
-        file = open("file.bin","wb")
+        file = open("power.bin","wb")
         for op in self.compiled:
             print op
             file.write(op)
@@ -31,6 +32,6 @@ class Compiler:
 
 sys.dont_write_bytecode = True
 
-compiler = Compiler("testing/test.p15")
+compiler = Compiler("testing/powers.p15")
 compiler.translate_to_opcodes()
 compiler.write_to_file()
