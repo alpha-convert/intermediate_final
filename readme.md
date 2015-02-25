@@ -38,7 +38,7 @@ MUL|`0x03 A B`|a,b|Multiply a and b, push answer to stack
 DIV|`0x04 A B`|a,b|Divide a by b, push answer to stack
 AND|`0x05 A B`|a,b|Binary AND a and b. Push answer to stack
 OR|`0x06 A B`|a,b|Binary OR a and b. Push answer to stack
-NOT|`0x07 A B`|a|Flip Bits
+NOT|`0x07 A`|a|Flip Bits
 XOR|`0x08 A B`|a,b|Binary XOR a and b. Push answer to stack
 LSH|`0x09 A B`|a,b|Left shift a by b
 RSH|`0x0A A B`|a,b|Right shift a by b
@@ -74,6 +74,7 @@ This works because the total number of bytes in the compiled machine code is 7.
 0x0D
 ```
 
-**Jumps: `JMP _label`**. `_<labelname>` is a reserved word. eg: `_variable` is illegal
+**Jumps: `JMP .label`**. `.<labelname>` is a reserved word. eg: `.variable` is illegal
+
 
 **Register use syntax:** registers will be referenced starting with a "%". Ex: `MOV 123 %GP1`

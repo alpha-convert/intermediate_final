@@ -1,13 +1,11 @@
-_calcstuff 10
+_calcstuff 9
 ADD 1 2
 MUL 3 4
 DIV 8 2
-RET
-
 
 _exit 1
 HLT
 
-ADD 1 2
+CMP 4 5
 JMP .calcstuff
 JMP .exit
