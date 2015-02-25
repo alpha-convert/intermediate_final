@@ -1,5 +1,5 @@
 _calcstuff 9
-ADD 1 2
+ADD %SP 2
 MUL 3 4
 DIV 8 2
 
