@@ -17,7 +17,8 @@ SY3|3rd argument in syscalls|`0xFF`
     - MP increments
 
 ##Memory
-**32 bit address space** (`0x0000` - `0xFFFF`)
+TBD
+**16 bit address space** (`0x00` - `0xFF`)
 
 **Stack:** `null` - `0x0BA2` (1/16 of total memory space)
 

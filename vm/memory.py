@@ -1,12 +1,15 @@
 class Memory:
     def __init__(self, size):
-        self.mem = [[None]]*10
+        self.size = size
+        self.mem = [0x00]*self.size
 
     def get(self, index):
-        return self.mem[index]
+        if not (index > self.size or index < self.size):
+            return self.mem[index]
 
     def set(self, index, val):
-        self.mem[index] = val
+        if not (index > self.size or index < self.size):
+            self.mem[index] = val
 
-    def _all(self)
-        return self.mem
+    def _all(self):
+        return list(self.mem)

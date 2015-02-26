@@ -1,4 +1,4 @@
-import re
+ximport re
 #MEMBERS:
 #filename: the name of the input file
 #filecontents: the contents of the file

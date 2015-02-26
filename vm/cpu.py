@@ -1,4 +1,4 @@
-
+from memory import Memory
 class CPU:
     def __init__(self):
         self.registers = {
@@ -18,4 +18,7 @@ class CPU:
             "%SY2":0x00,
             "%SY3":0x00
         }
-        
+
+    def cycle(self):
+        self.registers["%CL"] += 1
+        self.registers["%MP"] += 1
