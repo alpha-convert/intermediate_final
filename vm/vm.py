@@ -26,9 +26,6 @@ class VM:
             self.memory.set(self.cpu.registers["%SP"],val)
         self.cpu.registers["%SP"] += 1
 
-    def MOV(self,reg,val):
-        self.cpu.registers[reg] = val
-
     #DEBUG CODE
     def print_memory_segment(self,start_addr,end_addr):
         for i in range(start_addr,end_addr):
@@ -44,7 +41,7 @@ vm = VM()   #Create new
 #Bootload. This will do all the necciary operations
 vm.load_file(0x00,"software/bootloader.bin")
 vm.PSH(20)
-vm.MOV("%SP",33)
+vm.cpu.MOV("%SP",33)
 vm.PSH(0xFF)
 print vm.memory._all()
 vm.print_register("%SP")
