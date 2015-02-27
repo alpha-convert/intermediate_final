@@ -17,8 +17,9 @@ SY3|3rd argument in syscalls|`0xFF`
     - MP increments
 
 ##Memory
-TBD
+
 **16 bit address space** (`0x00` - `0xFF`)
+
 **Bootloader** `0x00`-`0x20`
 
 **Stack:** `0x21` - `0x61`
