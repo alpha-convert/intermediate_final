@@ -53,9 +53,9 @@ CMP|`0x11 A B`|a,b|Compares a,b, increases the mem-read pointer by 2 instead of 
 HLT|`0x12`|null|Halts excecution
 
 ###Syscalls:
-```mem_write(unsigned int addr, int value)```
+```(```0xF1```) mem_write(unsigned int addr, int value)```
 
-```mem_read(unsigned int addr,unsigned int reg)``` - Reads memory from address `addr` into register `reg`.
+```(```0xF2```) mem_read(unsigned int addr,unsigned int reg)``` - Reads memory from address `addr` into register `reg`.
 ###Syntax
 **No-arg operations:** `OP`
 
