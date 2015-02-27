@@ -1,4 +1,4 @@
-ximport re
+import re
 #MEMBERS:
 #filename: the name of the input file
 #filecontents: the contents of the file
@@ -6,7 +6,7 @@ ximport re
 class Parser:
     def __init__(self, filename):
         self.filename = filename
-        with open("testing/powers.p15", 'r') as file: #read the whole file
+        with open(filename, 'r') as file: #read the whole file
             self.file_contents = file.read()
 
     def tokenize(self):
@@ -53,12 +53,12 @@ class Parser:
 
 
 
-
-
-
-p = Parser("testing/test.p15")
-p.tokenize()
-p.get_labels()
-p.remove_label_defs()
-p.find_jumps()
-#p.update_with_labels()
+# 
+#
+#
+# p = Parser("bootloader.p15")
+# p.tokenize()
+# p.get_labels()
+# p.remove_label_defs()
+# p.find_jumps()
+# #p.update_with_labels()

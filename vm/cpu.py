@@ -21,4 +21,40 @@ class CPU:
 
     def cycle(self):
         self.registers["%CL"] += 1
-        self.registers["%MP"] += 1
+
+    def INC(self,register, times = 1):
+        for i in xrange(times):
+            self.registers[register] += 1
+
+    def ADD(self,a,b):
+        return a + b
+
+    def SUB(self,a,b):
+        return a - b
+
+    def MUL(self,a,b):
+        return a * b
+
+    def DIV(self,a,b):
+        return a / b
+
+    def AND(self,a,b):
+        return a & b
+
+    def OR(self,a,b):
+        return a | b
+
+    def NOT(self,a):
+        return ~a
+
+    def XOR(self,a,b):
+        return a ^ b
+
+    def LSF(self,a,b):
+        return a << b
+
+    def RSF(self,a,b):
+        return a >> b
+
+    def MOV(self,register,value):
+        self.registers[register] = value

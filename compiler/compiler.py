@@ -5,6 +5,7 @@ import sys
 class Compiler:
     def __init__(self,file):
         parser = Parser(file)
+        self.filename = file
         parser.tokenize()
         parser.get_labels()
         parser.remove_label_defs()
@@ -24,7 +25,7 @@ class Compiler:
         self.compiled = hexcode
 
     def write_to_file(self):
-        file = open("power.bin","wb")
+        file = open("bootloader.bin","wb")
         for op in self.compiled:
             print op
             file.write(op)
@@ -32,6 +33,6 @@ class Compiler:
 
 sys.dont_write_bytecode = True
 
-compiler = Compiler("testing/powers.p15")
+compiler = Compiler("bootloader.p15")
 compiler.translate_to_opcodes()
 compiler.write_to_file()

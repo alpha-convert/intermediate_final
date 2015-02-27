@@ -46,5 +46,5 @@ class Ops:
             #print str
             return self.ops[str]
         else:
-            print chr(int(str))
+            #print chr(int(str))
             return chr(int(str))
