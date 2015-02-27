@@ -19,14 +19,14 @@ SY3|3rd argument in syscalls|`0xFF`
 ##Memory
 TBD
 **16 bit address space** (`0x00` - `0xFF`)
+**Bootloader** `0x00`-`0x20`
 
-**Stack:** `null` - `0x0BA2` (1/16 of total memory space)
+**Stack:** `0x21` - `0x61`
 
-**Video memory:** `0x0BA3` - `0x3FFF`
+**Video memory:** `0x62` - `0xC6`
 
-**Bootloader** `0x4000`-`0x4FFF`
 
-**General** `0x5000` - `0xFFFF`
+**General** `0xC7` - `0xFF`
 
 #p15 Assembly Language Docs
 ###Instruction Set

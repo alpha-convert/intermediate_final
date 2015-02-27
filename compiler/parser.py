@@ -53,7 +53,7 @@ class Parser:
 
 
 
-# 
+#
 #
 #
 # p = Parser("bootloader.p15")

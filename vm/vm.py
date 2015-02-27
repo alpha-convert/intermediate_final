@@ -16,22 +16,38 @@ class VM:
             self.memory.mem[i] = ord(file_bin[i])
             self.cpu.registers["%MP"] = hex(i)
 
-    def run(self):
+    #def run(self):
 
 
-    def PSH(val):
+    def PSH(self,val):
         if isinstance(val,str):
             self.memory.set(self.cpu.registers["%SP"],self.cpu.registers[val])  #If is string, push into value of sp, value in reg
+        else:
+            self.memory.set(self.cpu.registers["%SP"],val)
+        self.cpu.registers["%SP"] += 1
 
+    def MOV(self,reg,val):
+        self.cpu.registers[reg] = val
 
     #DEBUG CODE
     def print_memory_segment(self,start_addr,end_addr):
         for i in range(start_addr,end_addr):
             print self.memory.get(i)
 
+    def stacktrace(self):
+        self.print_memory_segment(0x21,0x61)
+
+    def print_register(self,reg):
+        print "Value of {0} is: {1} ({2}).".format(reg, self.cpu.registers[reg], hex(self.cpu.registers[reg]))
+
 vm = VM()   #Create new
 #Bootload. This will do all the necciary operations
 vm.load_file(0x00,"software/bootloader.bin")
+vm.PSH(20)
+vm.MOV("%SP",33)
+vm.PSH(0xFF)
 print vm.memory._all()
+vm.print_register("%SP")
+
 #while True:
 #    vm.cpu.cycle()
