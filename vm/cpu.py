@@ -58,3 +58,6 @@ class CPU:
 
     def MOV(self,register,value):
         self.registers[register] = value
+
+    def print_register(self,reg):
+        print "Value of {0} is: {1} ({2}).".format(reg, self.registers[reg], hex(self.registers[reg]))

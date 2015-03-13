@@ -1,9 +1,11 @@
 from memory import Memory
 from cpu import CPU
+from vm_ops import Ops
 class VM:
     def __init__(self):
         self.memory = Memory(0xFF)
         self.cpu = CPU()
+        self.ops = Ops()
         #print self.memory._all()
 
     def load_file(self, addr, filename):
@@ -13,12 +15,22 @@ class VM:
         file.close()
         #print file_bin
         for i in range(addr,addr + len(file_bin)):
+            print hex(i)
             self.memory.mem[i] = ord(file_bin[i])
             self.cpu.registers["%MP"] = hex(i)
 
-    #def run(self):
+    def is_an_op(self,op):
+        return self.ops.contains(op)
 
+    def bootload(self):
+         cur_op_ptr = 0x00  #start at 0
+         while cur_op_ptr < 0x20: #length of bootloader
+         	op = self.memory.get(cur_op_ptr)	#find current op from memory by ptr
+            if self.is_an_op(op):  #if It's an op...
+            	print "Found an op! (%s)" % hex(op)#print the op in hex for readability
+				
 
+    #Should be the ONLY VM-Level instruction...
     def PSH(self,val):
         if isinstance(val,str):
             self.memory.set(self.cpu.registers["%SP"],self.cpu.registers[val])  #If is string, push into value of sp, value in reg
@@ -34,17 +46,9 @@ class VM:
     def stacktrace(self):
         self.print_memory_segment(0x21,0x61)
 
-    def print_register(self,reg):
-        print "Value of {0} is: {1} ({2}).".format(reg, self.cpu.registers[reg], hex(self.cpu.registers[reg]))
 
 vm = VM()   #Create new
-#Bootload. This will do all the necciary operations
+#Load bootloader from file
 vm.load_file(0x00,"software/bootloader.bin")
-vm.PSH(20)
-vm.cpu.MOV("%SP",33)
-vm.PSH(0xFF)
-print vm.memory._all()
-vm.print_register("%SP")
-
-#while True:
-#    vm.cpu.cycle()
+#print vm.memory._all()
+vm.bootload()

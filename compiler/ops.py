@@ -33,7 +33,7 @@ class Ops:
 
             #REGISTER/MEMORY OPS
             "MOV":"\x0B",
-            "PSH":"\x0C",
+            "PUSH":"\x0C",
             "POP":"\x0D",
             "SYS":"\x0E",
             "JMP":"\x0F",
