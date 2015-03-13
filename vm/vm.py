@@ -23,12 +23,16 @@ class VM:
         return self.ops.contains(op)
 
     def bootload(self):
-         cur_op_ptr = 0x00  #start at 0
-         while cur_op_ptr < 0x20: #length of bootloader
-         	op = self.memory.get(cur_op_ptr)	#find current op from memory by ptr
-            if self.is_an_op(op):  #if It's an op...
-            	print "Found an op! (%s)" % hex(op)#print the op in hex for readability
-				
+         self.cpu.registers["%MP"] = 0x00  #start at 0
+         while self.cpu.registers["%MP"] < 0x20: #length of bootloader
+         	op = self.memory.get(self.cpu.registers["%MP"])	#find current op from memory by ptr
+         	if self.is_an_op(op):  #if It's an op...
+           		print "Found an op! (%s)" % hex(op)#print the op in hex for readability
+           		self.process_op(op)
+
+	def process_op(self,op):
+		if op is 0x00:
+			print "NOOP!"				
 
     #Should be the ONLY VM-Level instruction...
     def PSH(self,val):

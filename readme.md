@@ -33,7 +33,7 @@ SY3|3rd argument in syscalls|`0xFF`
 ###Instruction Set
 Instruction|OpCode|Args|Description
 ---|:---:|---|---
-NOP|`0x00`|null|Does nothing. Absolutely useless, but standard in most assembly languages.
+NOP|`0x00`|null|Does nothing. Absolutely useless, but standard in most assembly languages. Also allows me to make careless dumb mistakes in my compiler with trailing newlines.
 ADD|`0x01 A B`|a,b|Add a and b, push answer to stack
 SUB|`0x02 A B`|a,b|Subtract a from b, push answer to stack
 MUL|`0x03 A B`|a,b|Multiply a and b, push answer to stack
