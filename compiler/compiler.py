@@ -25,7 +25,7 @@ class Compiler:
         self.compiled = hexcode
 
     def write_to_file(self):
-        file = open("bootloader.bin","wb")
+        file = open("test.bin","wb")
         for op in self.compiled:
             print op
             file.write(op)
@@ -33,6 +33,6 @@ class Compiler:
 
 sys.dont_write_bytecode = True
 
-compiler = Compiler("bootloader.p15")
+compiler = Compiler("testing/test.p15")
 compiler.translate_to_opcodes()
 compiler.write_to_file()

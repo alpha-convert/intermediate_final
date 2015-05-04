@@ -21,18 +21,35 @@ class VM:
 
     def is_an_op(self,op):
         return self.ops.contains(op)
-
+    
+    def incmp(self):
+        self.cpu.registers["%MP"] += 1
+            
     def bootload(self):
-         self.cpu.registers["%MP"] = 0x00  #start at 0
-         while self.cpu.registers["%MP"] < 0x20: #length of bootloader
-         	op = self.memory.get(self.cpu.registers["%MP"])	#find current op from memory by ptr
-         	if self.is_an_op(op):  #if It's an op...
-           		print "Found an op! (%s)" % hex(op)#print the op in hex for readability
-           		self.process_op(op)
+        self.cpu.registers["%MP"] = 0x00  #clear mem pointer to 0
+        
+        while self.cpu.registers["%MP"] < 0x20: #length of bootloader
+            op = self.memory.get(self.cpu.registers["%MP"])	#find current op from memory by mem ptr
+            
+            if self.is_an_op(op):  #if It's an op...
+                print "Found an op! (%s)" % hex(op)#print the op in hex for readability
+                self.process_op(op)
+                
+            self.cpu.registers["%MP"] += 1 #Remove this once all are implimented
+           	
 
-	def process_op(self,op):
-		if op is 0x00:
-			print "NOOP!"				
+    def process_op(self,op):
+        #return 0
+	if op is 0x00: #Nop! Does nothing, so we just inc mp and return
+	   self.incmp()
+	   return 0
+	if op is 0x01: #Add [mp + 1] to [m + 2], push to stack pointer + 1
+	    a = self.memory.get(self.cpu.registers["%MP"] + 1) #first number will be directly after the op in memory
+	    b = self.memory.get(self.cpu.registers["%MP"] + 2) #second will be just after that
+	    self.cpu.registers["%"]
+	    
+	
+	          #self.cpu.registers["%MP"] += 1 #nop does not require any jumps			
 
     #Should be the ONLY VM-Level instruction...
     def PSH(self,val):

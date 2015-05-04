@@ -1,0 +1,5 @@
+VM IS INCOMPLETE
+
+Syntax for the language can be found here: https://github.com/jdublu10/intermediate_final
+
+To compile: in the /compiler directory, create a *.p15 file. write the program in there. Open the compiler.py and modify lines 28 and 36 to “yourfile.p15” and “yourfile.bin”
